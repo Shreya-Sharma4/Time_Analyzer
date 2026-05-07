@@ -1,0 +1,50 @@
+{
+  "manifest_version": 3,
+  "name": "Time Analyzer Cloud",
+  "version": "2.7.3",
+  "description": "Analyze Google Form submissions with Cloud Sync and Security.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "offscreen"
+  ],
+  "host_permissions": [
+    "https://docs.google.com/forms/*",
+    "https://*.firebaseio.com/*",
+    "https://identitytoolkit.googleapis.com/*",
+    "https://generativelanguage.googleapis.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self';"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://docs.google.com/forms/d/e/*",
+        "https://docs.google.com/forms/d/*/viewform*",
+        "https://docs.google.com/forms/d/*/preview*",
+        "https://docs.google.com/forms/d/*/formResponse*",
+        "https://docs.google.com/forms/u/*/d/*"
+      ],
+      "js": ["classifier.js", "content.js", "teacher.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "analytics.html"
+  },
+  "icons": {
+    "128": "icons/icon.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["vendor/chart.umd.min.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
