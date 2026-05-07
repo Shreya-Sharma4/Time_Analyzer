@@ -1,5 +1,5 @@
 // --- CLOUD AI (GEMINI BATCH PROCESSOR) ---
-const GEMINI_API_KEY = "AIzaSyBSweDvmA0U4M6Dc0Clq6EsMDtrIszlMMo"; // <-- Put your AIza... key here
+const GEMINI_API_KEY = "AIzaSyBSw6EsMDtrIszlMMo"; // <-- Put your AIza... key here
 
 let creating; 
 
